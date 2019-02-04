@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LatestSoftwareGetter.Views;
+using Prism.Ioc;
+using Prism.Unity;
 using System.Windows;
 
 namespace LatestSoftwareGetter
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.Register<HomeView>();
+        }
+
+        protected override Window CreateShell()
+        {
+            return Container.Resolve<HomeView>();
+        }
     }
 }
