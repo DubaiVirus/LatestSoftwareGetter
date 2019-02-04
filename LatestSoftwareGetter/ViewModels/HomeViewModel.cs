@@ -34,6 +34,13 @@ namespace LatestSoftwareGetter.ViewModels
             set => SetProperty(ref _isDownloading, value);
         }
 
+        private bool _isSettingsPanelOpen;
+        public bool IsSettingsPanelOpen
+        {
+            get => _isSettingsPanelOpen;
+            set => SetProperty(ref _isSettingsPanelOpen, value);
+        }
+
 
         #endregion
 
@@ -74,7 +81,7 @@ namespace LatestSoftwareGetter.ViewModels
 
         private void ShowSettings()
         {
-
+            IsSettingsPanelOpen = !IsSettingsPanelOpen;
         }
 
         #endregion

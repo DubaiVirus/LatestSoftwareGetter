@@ -1,4 +1,5 @@
-﻿using LatestSoftwareGetter.Views;
+﻿using LatestSoftwareGetter.ViewModels;
+using LatestSoftwareGetter.Views;
 using Prism.Ioc;
 using Prism.Unity;
 using System.Windows;
@@ -9,7 +10,9 @@ namespace LatestSoftwareGetter
     {
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<HomeView>();
+            containerRegistry.RegisterSingleton<HomeView>();
+            containerRegistry.Register<SettingsView>();
+            containerRegistry.Register<SettingsViewModel>();
         }
 
         protected override Window CreateShell()
