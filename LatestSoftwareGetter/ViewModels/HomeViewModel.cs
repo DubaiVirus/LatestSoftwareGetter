@@ -16,7 +16,7 @@ namespace LatestSoftwareGetter.ViewModels
 
         public List<Download> DownloadsList
         {
-            get => _downloadsList?? new List<Download>();
+            get => _downloadsList ?? new List<Download>();
             set => SetProperty(ref _downloadsList, value);
         }
 
@@ -27,6 +27,13 @@ namespace LatestSoftwareGetter.ViewModels
             set => SetProperty(ref _selectedDownload, value);
         }
 
+        private bool _isDownloading;
+        public bool IsDownloading
+        {
+            get => _isDownloading;
+            set => SetProperty(ref _isDownloading, value);
+        }
+
 
         #endregion
 
@@ -34,9 +41,20 @@ namespace LatestSoftwareGetter.ViewModels
         public HomeViewModel()
         {
             GetSoftwareCommand = new DelegateCommand(GetSoftware);
+            ShowSettingsCommand = new DelegateCommand(ShowSettings);
 
-            DownloadsList = new List<Download>();
-            DownloadsList.Add(new Download{ Name = "Adobe Reader", Link = "https://admdownload.adobe.com/bin/live/readerdc_en_xa_crd_install.exe" });
+            DownloadsList = new List<Download>
+            {
+                new Download
+                {
+                    Name = "Adobe Reader",
+                    Link = "https://admdownload.adobe.com/bin/live/readerdc_en_xa_crd_install.exe"
+                },new Download
+                {
+                    Name = "Test",
+                    Link = "https://admdownload.adobe.com/bin/live/readerdc_en_xa_crd_install.exe"
+                }
+            };
         }
 
 
@@ -44,22 +62,18 @@ namespace LatestSoftwareGetter.ViewModels
 
         private void GetSoftware()
         {
-            //var url = "https://get.adobe.com/reader";
-            //var webRequest = WebRequest.Create(url);
-            //var response = webRequest.GetResponse();
-
-            //var webPageStream = response.GetResponseStream();
-            //var reader = new StreamReader(webPageStream);
-            //var source = reader.ReadToEnd();
-
-
             var downloadDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             var filePath = $@"{downloadDir}\reader.exe";
             using (var client = new WebClient())
             {
-                client.DownloadFile("", filePath);
+                client.DownloadFile(SelectedDownload.Link, filePath);
             }
 
+
+        }
+
+        private void ShowSettings()
+        {
 
         }
 
@@ -69,6 +83,7 @@ namespace LatestSoftwareGetter.ViewModels
 
         #region Commands
         public ICommand GetSoftwareCommand { get; set; }
+        public ICommand ShowSettingsCommand { get; set; }
 
         #endregion
     }
