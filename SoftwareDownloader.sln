@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDownloader", "SoftwareDownloader\SoftwareDownloader.csproj", "{D0C40913-7055-4ECD-A998-8B55FA726AD9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{9CA4E898-E8B6-4F8F-AEA0-51F79B718FD9}"
+	ProjectSection(SolutionItems) = preProject
+		CopyCofigToProgramData.bat = CopyCofigToProgramData.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
