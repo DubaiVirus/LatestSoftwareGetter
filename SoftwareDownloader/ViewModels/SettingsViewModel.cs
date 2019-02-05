@@ -76,13 +76,13 @@ namespace SoftwareDownloader.ViewModels
             {
                 var downloads = await LoadAllDownloadsAsync();
 
-                if (downloads.Count > 0 && downloads.Any(x => x.Link.ToLowerInvariant().Equals(DownloadLink)))
+                if (downloads.Count > 0 && downloads.Any(x => x.Link.ToLowerInvariant().Equals(DownloadLink.Trim())))
                 {
                     await ShowMessageAsync("This software already exists!", "Error");
                     return;
                 }
 
-                downloads.Add(new Download { Name = DownloadName, Link = DownloadLink });
+                downloads.Add(new Download { Name = DownloadName.Trim(), Link = DownloadLink.Trim() });
                 await _serializer.SaveConfigAsync(downloads, MyStrings.XmlFileLocation);
 
                 await LoadAllDownloadsAsync();

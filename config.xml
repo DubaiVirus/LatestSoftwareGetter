@@ -44,4 +44,24 @@
     <Name>VirtualBox v6.0.4-128413</Name>
     <Link>https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Win.exe</Link>
   </Download>
+  <Download>
+    <Name>CPU-Z v1.87</Name>
+    <Link>http://download.cpuid.com/cpu-z/cpu-z_1.87-en.zip</Link>
+  </Download>
+  <Download>
+    <Name>Odin v3.13.1</Name>
+    <Link>https://odindownload.com/download/Odin3_v3.13.1.zip</Link>
+  </Download>
+  <Download>
+    <Name>adbLink v4.0</Name>
+    <Link>https://www.jocala.com/downloads/adblw40.exe</Link>
+  </Download>
+  <Download>
+    <Name>xampp v7.3.1</Name>
+    <Link>https://downloadsapachefriends.global.ssl.fastly.net/7.3.1/xampp-win32-7.3.1-0-VC15-installer.exe</Link>
+  </Download>
+  <Download>
+    <Name>K-Lite Codec Pack v14.7</Name>
+    <Link>http://files2.codecguide.com/K-Lite_Codec_Pack_1470_Standard.exe</Link>
+  </Download>
 </ArrayOfDownload>

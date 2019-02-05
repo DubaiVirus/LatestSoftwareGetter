@@ -11,7 +11,7 @@
         xmlns:viewModels="clr-namespace:SoftwareDownloader.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewModels:HomeViewModel}"
-        Title="Latest software getter" Height="420" Width="400">
+        Title="Software Downloader" Height="420" Width="400">
     <controls:MetroWindow.Resources>
         <converters:InvertBooleanConverter  x:Key="Not" />
     </controls:MetroWindow.Resources>
