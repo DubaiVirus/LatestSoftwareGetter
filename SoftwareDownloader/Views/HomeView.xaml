@@ -49,7 +49,6 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-
             <ComboBox Grid.Row="0"
                       Grid.Column="0"
                       MinWidth="150"
@@ -72,6 +71,10 @@
                     Content="Get"
                     Command="{Binding GetSoftwareCommand}"
                     IsEnabled="{Binding IsSettingsPanelOpen, Converter={StaticResource Not}}" />
+            <controls:ProgressRing Grid.Row="1"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   IsActive="{Binding IsDownloading}"/>
         </Grid>
         
         <controls:Flyout Grid.Row="0"

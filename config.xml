@@ -4,4 +4,40 @@
     <Name>Adobe Reader</Name>
     <Link>https://admdownload.adobe.com/bin/live/readerdc_en_xa_crd_install.exe</Link>
   </Download>
+  <Download>
+    <Name>7zip v1806</Name>
+    <Link>https://www.7-zip.org/a/7z1806-x64.exe</Link>
+  </Download>
+  <Download>
+    <Name>Notepad++ v7.6.3</Name>
+    <Link>https://notepad-plus-plus.org/repository/7.x/7.6.3/npp.7.6.3.Installer.x64.exe</Link>
+  </Download>
+  <Download>
+    <Name>FileZilla v3.40</Name>
+    <Link>https://download.filezilla-project.org/client/FileZilla_3.40.0_win64-setup_bundled.exe</Link>
+  </Download>
+  <Download>
+    <Name>WordPress</Name>
+    <Link>https://wordpress.org/latest.zip</Link>
+  </Download>
+  <Download>
+    <Name>Everything v1.4.1.932</Name>
+    <Link>https://www.voidtools.com/Everything-1.4.1.932.x86-Setup.exe</Link>
+  </Download>
+  <Download>
+    <Name>PassbildPro v2.6b</Name>
+    <Link>https://www.passbild-pro.de/programm/v2.6b/Setup-PassbildPro_v2.6b.zip</Link>
+  </Download>
+  <Download>
+    <Name>Java JRE v8u201</Name>
+    <Link>https://javadl.oracle.com/webapps/download/AutoDL?BundleId=236857_42970487e3af4f5aa5bca3f542482c60</Link>
+  </Download>
+  <Download>
+    <Name>Firefox v65.0</Name>
+    <Link>https://download-installer.cdn.mozilla.net/pub/firefox/releases/65.0/win32/en-US/Firefox%20Installer.exe</Link>
+  </Download>
+  <Download>
+    <Name>.Net framework 4.7.2</Name>
+    <Link>https://download.microsoft.com/download/0/5/C/05C1EC0E-D5EE-463B-BFE3-9311376A6809/NDP472-KB4054531-Web.exe</Link>
+  </Download>
 </ArrayOfDownload>

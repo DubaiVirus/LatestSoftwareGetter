@@ -65,21 +65,26 @@ namespace SoftwareDownloader.ViewModels
 
         private async Task GetSoftwareAsync()
         {
+            IsDownloading = true;
+
             var downloadDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var filePath = $@"{downloadDir}\reader.exe";
+            var filePath = $@"{downloadDir}\{SelectedDownload.Name}.exe";
 
             try
             {
                 using (var client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(SelectedDownload.Link), filePath);
+                    await client.DownloadFileTaskAsync(new Uri(SelectedDownload.Link), filePath);
                 }
                 await ShowMessageAsync("Download finished", "Done");
             }
             catch (Exception)
             {
                 await ShowMessageAsync("An unknown error has occured", "Error");
+                IsDownloading = false;
             }
+
+            IsDownloading = false;
         }
 
         private async Task ShowSettingsAsync()
