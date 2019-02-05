@@ -7,4 +7,6 @@ The download details are saved in a config.xml file in %ProgramData%\foreignWay\
 
 I've included a a sample file in this Repo.
 
+There's a batch file named CopyCofigToProgramData.bat included to copy the configuration file to the ProgramData for your convenience.
+
 Enjoy!
