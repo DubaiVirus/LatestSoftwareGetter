@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDownload xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Download>
+    <Name>Adobe Reader</Name>
+    <Link>https://admdownload.adobe.com/bin/live/readerdc_en_xa_crd_install.exe</Link>
+  </Download>
+</ArrayOfDownload>

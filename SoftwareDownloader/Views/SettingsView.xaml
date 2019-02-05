@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:local="clr-namespace:SoftwareDownloader.Views"
              xmlns:viewModels="clr-namespace:SoftwareDownloader.ViewModels"
+             xmlns:mvvm="http://prismlibrary.com/"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance viewModels:SettingsViewModel}">
@@ -16,29 +17,66 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
-                   Margin="10,30,10,0"
+                   Margin="20,20,10,0"
+                   FontWeight="Bold"
                    Text="Add a Software to the list"/>
         <TextBlock Grid.Row="1"
-                   Margin="20,30,10,0"
+                   Margin="0,5,10,0"
                    Text="Software name"/>
         <TextBox Grid.Row="2"
-                 Margin="0,10,10,0"
+                 Margin="0,5,10,0"
                  Text="{Binding DownloadName}"/>
 
         <TextBlock Grid.Row="3"
-                   Margin="0,10,10,0"
+                   Margin="0,5,10,0"
                    Text="Software link"/>
         <TextBox Grid.Row="4"
-                 Margin="0,10,10,0"
+                 Margin="0,5,10,0"
                  Text="{Binding DownloadLink}"/>
 
         <Button Grid.Row="5"
-                 Margin="0,30,5,0"
+                 Margin="0,20,5,0"
+                 Foreground="DarkGreen"
+                 FontWeight="Bold"
                  Content="Add"
                  Command="{Binding AddDownloadCommand}"/>
+        <TextBlock Grid.Row="6"
+                   Margin="0,20,0,0"
+                   FontWeight="Bold"
+                   Text="Delete a software"/>
+
+        <Grid Grid.Row="7" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Grid.Column="0"
+                      MinWidth="150"
+                      SelectedIndex="0"
+                      Margin="0,0,0,0"
+                      ItemsSource="{Binding DownloadsList, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedDownload}"
+                      DisplayMemberPath="Name">
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Foreground"
+                                Value="AliceBlue" />
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox>
+            <Button Grid.Column="1"
+                    Margin="10,0,0,0"
+                    Foreground="DarkRed"
+                    FontWeight="Bold"
+                    Content="Delete"
+                    Command="{Binding DeleteDownloadCommand}"/>
+        </Grid>
     </Grid>
 </UserControl>

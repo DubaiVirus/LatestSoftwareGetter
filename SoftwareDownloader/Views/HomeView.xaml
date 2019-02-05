@@ -6,12 +6,12 @@
         xmlns:mvvm="http://prismlibrary.com/"
         mvvm:ViewModelLocator.AutoWireViewModel="True"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:viewModels="clr-namespace:SoftwareDownloader.ViewModels"
         xmlns:converters="clr-namespace:SoftwareDownloader.Converters"
         xmlns:views="clr-namespace:SoftwareDownloader.Views"
+        xmlns:viewModels="clr-namespace:SoftwareDownloader.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewModels:HomeViewModel}"
-        Title="Latest software getter" Height="400" Width="400">
+        Title="Latest software getter" Height="420" Width="400">
     <controls:MetroWindow.Resources>
         <converters:InvertBooleanConverter  x:Key="Not" />
     </controls:MetroWindow.Resources>
@@ -55,8 +55,9 @@
                       MinWidth="150"
                       SelectedIndex="0"
                       Margin="30,50,0,0"
-                      ItemsSource="{Binding DownloadsList}"
+                      ItemsSource="{Binding DownloadsList, Mode=TwoWay}"
                       SelectedItem="{Binding SelectedDownload}"
+                      IsEnabled="{Binding IsSettingsPanelOpen, Converter={StaticResource Not}}"
                       DisplayMemberPath="Name">
                 <ComboBox.ItemContainerStyle>
                     <Style TargetType="ComboBoxItem">
@@ -69,13 +70,15 @@
                     Margin="30,50,20,0"
                     MinWidth="100"
                     Content="Get"
-                    Command="{Binding GetSoftwareCommand}"/>
+                    Command="{Binding GetSoftwareCommand}"
+                    IsEnabled="{Binding IsSettingsPanelOpen, Converter={StaticResource Not}}" />
         </Grid>
         
         <controls:Flyout Grid.Row="0"
                              Position="Right"
                              Theme="Dark"
                              IsOpen="{Binding IsSettingsPanelOpen}"
+                             CloseButtonVisibility="Collapsed"
                              MinWidth="200">
             <views:SettingsView/>
         </controls:Flyout>

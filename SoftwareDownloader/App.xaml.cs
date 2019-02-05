@@ -1,8 +1,9 @@
-﻿using System.Windows;
-using Prism.Ioc;
+﻿using Prism.Ioc;
 using Prism.Unity;
-using SoftwareDownloader.ViewModels;
+using SoftwareDownloader.Serializers;
 using SoftwareDownloader.Views;
+using System.Windows;
+using SoftwareDownloader.ViewModels;
 
 namespace SoftwareDownloader
 {
@@ -10,9 +11,11 @@ namespace SoftwareDownloader
     {
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<HomeView>();
+            containerRegistry.Register<HomeView>();
             containerRegistry.Register<SettingsView>();
             containerRegistry.Register<SettingsViewModel>();
+            containerRegistry.Register<HomeViewModel>();
+            containerRegistry.Register<IXmlSerializer, XmlSerializer>();
         }
 
         protected override Window CreateShell()

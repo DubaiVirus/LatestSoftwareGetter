@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Windows.Input;
+﻿using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
 using Prism.Mvvm;
+using SoftwareDownloader.Helpers;
 using SoftwareDownloader.Model;
+using SoftwareDownloader.Serializers;
+using SoftwareDownloader.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace SoftwareDownloader.ViewModels
 {
     public class HomeViewModel : BindableBase
     {
         #region Properties
-
         private List<Download> _downloadsList;
-
         public List<Download> DownloadsList
         {
             get => _downloadsList ?? new List<Download>();
@@ -41,47 +46,75 @@ namespace SoftwareDownloader.ViewModels
             set => SetProperty(ref _isSettingsPanelOpen, value);
         }
 
-
+        private readonly IXmlSerializer _serializer;
         #endregion
 
 
-        public HomeViewModel()
+        public HomeViewModel(IXmlSerializer serializer)
         {
-            GetSoftwareCommand = new DelegateCommand(GetSoftware);
-            ShowSettingsCommand = new DelegateCommand(ShowSettings);
+            _serializer = serializer;
 
-            DownloadsList = new List<Download>
-            {
-                new Download
-                {
-                    Name = "Adobe Reader",
-                    Link = "https://admdownload.adobe.com/bin/live/readerdc_en_xa_crd_install.exe"
-                },new Download
-                {
-                    Name = "Test",
-                    Link = "https://admdownload.adobe.com/bin/live/readerdc_en_xa_crd_install.exe"
-                }
-            };
+            GetSoftwareCommand = new DelegateCommand(async () => await GetSoftwareAsync());
+            ShowSettingsCommand = new DelegateCommand(async () => await ShowSettingsAsync().ConfigureAwait(false));
+
+            Task.Run(async () => await LoadAllDownloadsAsync().ConfigureAwait(false));
         }
 
 
         #region Methodes
 
-        private void GetSoftware()
+        private async Task GetSoftwareAsync()
         {
             var downloadDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             var filePath = $@"{downloadDir}\reader.exe";
-            using (var client = new WebClient())
+
+            try
             {
-                client.DownloadFile(SelectedDownload.Link, filePath);
+                using (var client = new WebClient())
+                {
+                    client.DownloadFileAsync(new Uri(SelectedDownload.Link), filePath);
+                }
+                await ShowMessageAsync("Download finished", "Done");
             }
-
-
+            catch (Exception)
+            {
+                await ShowMessageAsync("An unknown error has occured", "Error");
+            }
         }
 
-        private void ShowSettings()
+        private async Task ShowSettingsAsync()
         {
             IsSettingsPanelOpen = !IsSettingsPanelOpen;
+
+            await LoadAllDownloadsAsync();
+        }
+
+        private async Task<List<Download>> LoadAllDownloadsAsync()
+        {
+            var lastSelectedDownload = SelectedDownload;
+
+            var downloads = await _serializer.LoadConfigAsync<List<Download>>(MyStrings.XmlFileLocation) ?? new List<Download>();
+            DownloadsList = downloads;
+
+            if (downloads.Count > 0 && lastSelectedDownload != null)
+            {
+                var download = downloads.First(x => x.Link.ToLowerInvariant().Equals(lastSelectedDownload.Link.ToLowerInvariant())) ?? new Download();
+                SelectedDownload = download;
+            }
+            return downloads;
+        }
+
+        private async Task ShowMessageAsync(string messageText, string title)
+        {
+            try
+            {
+                var homeView = Application.Current.Dispatcher.Invoke(() => Application.Current.Windows.OfType<HomeView>().FirstOrDefault());
+                await Application.Current.Dispatcher.Invoke(() => homeView.ShowMessageAsync(title, messageText));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(messageText, title);
+            }
         }
 
         #endregion
