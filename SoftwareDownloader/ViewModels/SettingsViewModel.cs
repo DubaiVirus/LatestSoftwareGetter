@@ -1,8 +1,8 @@
-﻿using Prism.Commands;
+﻿using System.Windows.Input;
+using Prism.Commands;
 using Prism.Mvvm;
-using System.Windows.Input;
 
-namespace LatestSoftwareGetter.ViewModels
+namespace SoftwareDownloader.ViewModels
 {
     public class SettingsViewModel : BindableBase
     {

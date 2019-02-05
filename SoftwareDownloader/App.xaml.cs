@@ -1,10 +1,10 @@
-﻿using LatestSoftwareGetter.ViewModels;
-using LatestSoftwareGetter.Views;
+﻿using System.Windows;
 using Prism.Ioc;
 using Prism.Unity;
-using System.Windows;
+using SoftwareDownloader.ViewModels;
+using SoftwareDownloader.Views;
 
-namespace LatestSoftwareGetter
+namespace SoftwareDownloader
 {
     public partial class App : PrismApplication
     {

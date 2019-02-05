@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace LatestSoftwareGetter.Converters
+namespace SoftwareDownloader.Converters
 {
     public class InvertBooleanConverter : IValueConverter
     {

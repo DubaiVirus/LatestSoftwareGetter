@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LatestSoftwareGetter", "LatestSoftwareGetter\LatestSoftwareGetter.csproj", "{D0C40913-7055-4ECD-A998-8B55FA726AD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDownloader", "SoftwareDownloader\SoftwareDownloader.csproj", "{D0C40913-7055-4ECD-A998-8B55FA726AD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

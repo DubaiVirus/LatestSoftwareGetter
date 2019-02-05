@@ -1,12 +1,12 @@
-﻿using LatestSoftwareGetter.Model;
-using Prism.Commands;
-using Prism.Mvvm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows.Input;
+using Prism.Commands;
+using Prism.Mvvm;
+using SoftwareDownloader.Model;
 
-namespace LatestSoftwareGetter.ViewModels
+namespace SoftwareDownloader.ViewModels
 {
     public class HomeViewModel : BindableBase
     {

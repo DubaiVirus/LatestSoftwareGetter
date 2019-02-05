@@ -1,4 +1,4 @@
-﻿namespace LatestSoftwareGetter.Model
+﻿namespace SoftwareDownloader.Model
 {
     public class Download
     {

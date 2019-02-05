@@ -1,6 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 
-namespace LatestSoftwareGetter.Views
+namespace SoftwareDownloader.Views
 {
     public partial class HomeView : MetroWindow
     {

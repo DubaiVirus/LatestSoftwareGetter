@@ -1,7 +1,7 @@
-﻿<prism:PrismApplication x:Class="LatestSoftwareGetter.App"
+﻿<prism:PrismApplication x:Class="SoftwareDownloader.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:LatestSoftwareGetter"
+             xmlns:local="clr-namespace:SoftwareDownloader"
              xmlns:prism="http://prismlibrary.com/">
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
